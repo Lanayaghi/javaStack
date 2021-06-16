@@ -8,11 +8,11 @@
 		<version>2.5.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.axsos.HelloHuman</groupId>
-	<artifactId>HelloHuman</artifactId>
+	<groupId>com.axsos.TimeDisplay</groupId>
+	<artifactId>TimeDisplay</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>HelloHuman</name>
+	<name>TimeDisplay</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
@@ -33,7 +33,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
 		        <dependency>
                 <groupId>org.apache.tomcat.embed</groupId>
                 <artifactId>tomcat-embed-jasper</artifactId>
@@ -42,7 +41,6 @@
                 <groupId>javax.servlet</groupId>
                 <artifactId>jstl</artifactId>
         </dependency>
-        
 	</dependencies>
 
 	<build>

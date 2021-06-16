@@ -1,0 +1,19 @@
+.container{
+  display: flex;
+  flex-wrap: nowrap;
+  
+  justify-content:space-around ;
+	
+}
+
+.time{
+	color: green;
+	text-align: center;
+	size: 10px;
+}
+
+.date{
+	color: blue;
+	text-align: center;
+	size: 10px;
+}
