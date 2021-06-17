@@ -9,7 +9,7 @@
 </head>
 <body>
 <p>You have visited the <a>http://your_server</a> <c:out value="${count }"></c:out> times </p>
-<a href="/you_server/">Test another visit</a>
+<a href="/you_server">Test another visit</a>
 
 </body>
 </html>

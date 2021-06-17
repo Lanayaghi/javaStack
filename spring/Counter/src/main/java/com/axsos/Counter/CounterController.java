@@ -33,8 +33,8 @@ public class CounterController {
 	
 	@RequestMapping("/reset")
 	public String reset(HttpSession session) {
-		session.setAttribute("count", 0);
-		return"server.jsp";
+		session.removeAttribute("count");
+		return"redirect:/you_server/counter";
 	}
    
 }

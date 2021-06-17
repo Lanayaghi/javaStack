@@ -9,6 +9,6 @@
 </head>
 <body>
 <h1>Welcome user!</h1>
-<a href="/reset">Reset counter</a>
+<a href="/you_server/reset">Reset counter</a>
 </body>
 </html>
