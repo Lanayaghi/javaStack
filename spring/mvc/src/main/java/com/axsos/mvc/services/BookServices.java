@@ -1,7 +1,10 @@
 package com.axsos.mvc.services;
 
+import java.awt.print.Book;
 import java.util.List;
 import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Service;
 
@@ -20,7 +23,7 @@ public class BookServices {
         return bookrepo.findAll();
     }
     // creates a book
-    public book createbook(book b) {
+    public book createBook(book b) {
         return bookrepo.save(b);
     }
     // retrieves a book
@@ -32,6 +35,11 @@ public class BookServices {
             return null;
         }
     }
+    
+    public book updateBook(book b) {
+        return bookrepo.save(b);
+    }
+    
   public book updateBook( Long id, String title, String desc, String lang, Integer numOfPages) { 
 	 Optional<book> book2 = bookrepo.findById(id);
 	 book book1 = book2.get();
@@ -42,6 +50,8 @@ public class BookServices {
 	 return bookrepo.save(book1);
 	
 }
+  
+
   public void deleteBook(Long id) {
 	  bookrepo.deleteById(id);
   }
