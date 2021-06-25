@@ -31,7 +31,7 @@ public class License {
     @Size(min = 2)
     private String number;
     
-//    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date expirationDate;
     @Size(min = 2)
     private String state;
