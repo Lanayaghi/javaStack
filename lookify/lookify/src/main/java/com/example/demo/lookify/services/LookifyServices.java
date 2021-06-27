@@ -39,7 +39,7 @@ public class LookifyServices {
 	}
 	
 	public List<Songs> topTenByRating(){
-		return lookifyReposit.findTopTenByOrderByRateDesc();
+		return lookifyReposit.findTop10ByOrderByRateDesc();
 		}
 	
 	public Songs updateSong(Long id, Songs song) {

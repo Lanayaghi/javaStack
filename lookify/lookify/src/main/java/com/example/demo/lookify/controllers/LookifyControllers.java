@@ -70,7 +70,10 @@ public class LookifyControllers {
 	   }
 	   return "redirect:/dashboard";
    }
-
-
-   
+  
+   @RequestMapping("/songs/{id}/delete")
+   public String destroy(@PathVariable("id") Long id) {
+	   lookifyService.deleteSong(id);
+	   return "redirect:/dashboard";
+	   }
 }

@@ -18,11 +18,8 @@
 
 
 
-<form action="/songs/${song.id}" method="post">
+<a href="/songs/${song.id}/delete">Delete Song </a>
 
-    <input type="hidden" name="_method" value="delete">
-    
-    <input type="submit" value="Delete">
-</form>
+
 </body>
 </html>

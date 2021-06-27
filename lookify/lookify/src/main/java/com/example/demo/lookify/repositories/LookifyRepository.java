@@ -10,7 +10,7 @@ import com.example.demo.lookify.models.Songs;
 @Repository
 public interface LookifyRepository extends CrudRepository<Songs, Long>{
 	List<Songs> findAll();
-	List<Songs> findTopTenByOrderByRateDesc();
+	List<Songs> findTop10ByOrderByRateDesc();
 	List<Songs> findByArtistContaining(String artist);
 	
 
