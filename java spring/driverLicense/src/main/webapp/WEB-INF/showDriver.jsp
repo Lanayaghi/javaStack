@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>${ driver.firstName } ${ driver.lastName }</h1>
-		<p><strong>License Number</strong> ${ driver.license.getNumberAsString() }</p>
-		<p><strong>Expiration Date</strong> ${ driver.license.getExpirationDateFormatted() }</p>
+		<p><strong>License Number</strong> ${ driver.license.number }</p>
+		<p><strong>Expiration Date</strong> ${ driver.license.expirationDate }</p>
 </body>
 </html>

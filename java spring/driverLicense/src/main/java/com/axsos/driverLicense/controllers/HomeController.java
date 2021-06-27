@@ -49,7 +49,7 @@ public class HomeController {
 			return "redirect:/driver/new";
 		}else {
 			driverService.createDriver(driver);
-			return "redirect:/driver"+ driver.getId();
+			return "redirect:/driver/"+ driver.getId();
 		}
 	}
 	
@@ -60,14 +60,14 @@ public class HomeController {
 		return"newLicense.jsp";
 	}
 	
-	@PostMapping("/License/new")
+	@PostMapping("/license/new")
 	public String newLicense(@Valid @ModelAttribute("license") License license, BindingResult result) {
 		if (result.hasErrors()) {
 			return "redirect:/license/new";
 		}else {
 			license.setNumber(String.format("%05d", license.getDriver().getId()));
 			licenseservice.createLicense(license);
-			return "redirect:/driver"+ license.getDriver().getId();
+			return "redirect:/driver/"+ license.getDriver().getId();
 		}
 	}
 
