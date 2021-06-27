@@ -41,32 +41,36 @@ public class LanguageController {
 		}
 		
 	}
+	
 
-	@RequestMapping(value="/languages/{id}/edit", method = RequestMethod.PUT)
+     @RequestMapping("/languages/{id}")
+     public String show(@PathVariable("id") Long id, Model model) {
+	 Language language = languageServices.findLanguage(id);
+	 model.addAttribute("language", language);
+	 return "show.jsp";
+}
+
+	@RequestMapping(value="/languages/edit/{id}")
 	public String edit(@PathVariable("id") Long id, Model model) {
 		Language language = languageServices.findLanguage(id);
 		model.addAttribute("language", language);
-		return "redirect:/"+id;
+		return "edit.jsp";
 
 	}
 	
-	@RequestMapping(value="/{id}/edit")
+	@RequestMapping(value="/languages/update/{id}", method = RequestMethod.PUT)
 	public String editBook(@Valid @ModelAttribute("language") Language language, BindingResult result) {
 		if (result.hasErrors()) {
 			return "edit.jsp";
 		}else {
 			languageServices.updateLanguage(language);
 			return "redirect:/languages";
+
 		}
 	}
-	@RequestMapping("/languages/{id}")
-	public String show(@PathVariable("id") Long id, Model model) {
-		Language language = languageServices.findLanguage(id);
-		model.addAttribute("language", language);
-		return "edit.jsp";
-	}
+
 	
-	@RequestMapping(value = "/{id}")
+	@RequestMapping(value = "/languages/delete/{id}")
     public String delete(@PathVariable("id") Long id) {
     	languageServices.deleteLanguage(id);
     	  return "redirect:/languages";
