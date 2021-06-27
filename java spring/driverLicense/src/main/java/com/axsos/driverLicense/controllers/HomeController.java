@@ -34,7 +34,7 @@ public class HomeController {
 	
 	@GetMapping("/driver/{id}")
 	public String showDriver(@PathVariable Long id, Model model) {
-		Driver driver = driverService.findDriver(id);
+		Driver driver = driverService.finDriversById(id);
 		model.addAttribute("driver",driver);
 		return "showDriver.jsp";
 	}
@@ -55,7 +55,7 @@ public class HomeController {
 	
 	@GetMapping("/license/new")
 	public String newLicenseForm(@ModelAttribute("license") License license,Model model) {
-		List<Driver> driver = driverService.findAllDrivers();
+		List<Driver> driver = driverService.getUnlicensedDriver();
 		model.addAttribute("drivers", driver);
 		return"newLicense.jsp";
 	}

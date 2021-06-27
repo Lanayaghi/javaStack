@@ -18,6 +18,14 @@ public class DriverServices {
 		return driverReposit.findAll();
 	}
 	
+	public Driver finDriversById(Long id) {
+		return driverReposit.findById(id).orElse(null);
+	}
+	
+	public List<Driver> getUnlicensedDriver() {
+		return driverReposit.findByLicenseIdIsNull();
+	}
+	
 	public Driver findDriver(Long id) {
 		Optional<Driver> d = driverReposit.findById(id);
 		if (d.isPresent()) {

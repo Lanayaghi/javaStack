@@ -25,7 +25,7 @@
         <tr>
             <td><c:out value="${driver.firstName}"/></td>
             <td><c:out value="${driver.lastName}"/></td>
-            <td><c:out value="${driver.license}"/></td>
+            <td><c:out value="${driver.license.number}"/></td>
             <td><c:out value="${driver.license.state}"/></td>
             <td><c:out value="${driver.license.expirationDate}"/></td>
         </tr>

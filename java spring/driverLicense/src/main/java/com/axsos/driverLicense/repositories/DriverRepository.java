@@ -10,5 +10,6 @@ import com.axsos.driverLicense.models.Driver;
 @Repository
 public interface DriverRepository extends CrudRepository<Driver, Long>{
 	List<Driver> findAll();
+	List<Driver> findByLicenseIdIsNull();
 
 }
