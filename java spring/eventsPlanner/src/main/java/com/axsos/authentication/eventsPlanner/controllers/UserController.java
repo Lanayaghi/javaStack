@@ -1,4 +1,4 @@
-package com.axsos.authentication.controllers;
+package com.axsos.authentication.eventsPlanner.controllers;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -12,47 +12,48 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.axsos.authentication.models.User;
-import com.axsos.authentication.services.UserService;
-import com.axsos.authentication.validator.UserValidation;
+import com.axsos.authentication.eventsPlanner.models.User;
+import com.axsos.authentication.eventsPlanner.servecies.UserServices;
+import com.axsos.authentication.eventsPlanner.validator.UserValid;
+
+
 
 @Controller
 public class UserController {
-	
 	@Autowired
-	private UserService userServ;
+	private UserServices userServ;
 	@Autowired
-	private UserValidation userVali;
+	private UserValid userVali;
 	
 	   
-    @RequestMapping("/register")
-    public String registerForm(@ModelAttribute("user") User user, HttpSession session) {
+    @RequestMapping("/")
+    public String registerForm(@ModelAttribute("registration") User user, HttpSession session) {
     	if(session.getAttribute("userId") != null) {  //user is looged()
-    		return "redirect:/home";
+    		return "redirect:/";
     	}
-    	return "register.jsp";
+    	return "index.jsp";
     }
     @RequestMapping("/login")
     public String login( HttpSession session) {
     	if(session.getAttribute("userId") != null) {//user is looged()
-        	return "redirect:/home";
+        	return "redirect:/";
     	} 
-    	return "login.jsp";
+    	return "index.jsp";
     }
     
-    @RequestMapping(value="/register", method=RequestMethod.POST)
-    public String registerUser(@Valid @ModelAttribute("user") User user, BindingResult result, HttpSession session, Model model) {
+    @RequestMapping(value="/", method=RequestMethod.POST)
+    public String registerUser(@Valid @ModelAttribute("registration") User user, BindingResult result, HttpSession session, Model model) {
     userVali.validate(user, result);
        if (result.hasErrors()) {
-    	   return "register.jsp";
+    	   return "index.jsp";
        }
     	   if(userServ.findByEmail(user.getEmail()) != null) {
     		   model.addAttribute("error", "This Email is already used!");
-    		   return "register.jsp";
+    		   return "index.jsp";
     	   } else {
     	   userServ.registerUser(user);
     	   session.setAttribute("userId", user.getId());
-    	   return"redirect:/home";
+    	   return"redirect:/";
     	   
        }
     }
@@ -64,10 +65,10 @@ public class UserController {
     	if(userServ.authenticateUser(email, password) ) {
     		Long id = userServ.findByEmail(email).getId();
     		session.setAttribute("userId", id);
-    		return "redirect:/home";
+    		return "redirect:/event";
     	} else {
     		model.addAttribute("error", "the email or password is inavlid");
-    		return "login.jsp";
+    		return "redirect:/";
     	}
     }
     
@@ -84,6 +85,7 @@ public class UserController {
     	
     }
     }
+    
     @RequestMapping("/logout")
     public String logout(HttpSession session) {
         // invalidate session
@@ -91,4 +93,6 @@ public class UserController {
     	session.invalidate();
     	return "redirect:/register";
     }
-}
+    
+    }
+

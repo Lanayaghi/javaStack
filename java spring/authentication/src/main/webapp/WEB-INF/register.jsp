@@ -11,7 +11,10 @@
 <body>
     <h1>Register!</h1>
     
+    
     <p><form:errors path="user.*"/></p>
+   
+    <p><c:out value="${error}" /></p>
     
     <form:form method="POST" action="/register" modelAttribute="user">
         <p>
